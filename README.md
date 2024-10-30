@@ -17,3 +17,5 @@ The script takes a pre-defined list of bands from a Python list (`local_bands.py
 5. Run it: `python app.py`
 
 A csv file with a timestamp will be written to the root directory. Enjoy.
+
+❗ Don't forget to commit and push any changs made to the `local_bands.py` file.
