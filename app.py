@@ -87,7 +87,8 @@ def main():
     
     # Optional: wait a bit before making the next request (to avoid rate-limiting issues)
     # print(artists_info[idx])
-    time.sleep(.1)
+    print("", end=".", flush=True)
+    time.sleep(1)
 
   write_csv(bands)
 
@@ -98,7 +99,9 @@ def create_filename(base_name):
   return filename
 
 def write_csv(bands):
-  print(len(bands))
+  print("")
+  band_count = len(bands)
+  print(f"{band_count} bands processed")
   sorted_bands = sorted(bands, key=lambda x: x.monthly_listeners, reverse=True)
               
   with open(create_filename('denver_bands'), "w", newline="") as file:
@@ -109,21 +112,6 @@ def write_csv(bands):
     writer.writerow(["Artist", "Monthly Listeners", "Spotify Link", "Social Links", "Genres", "Notes"])
     
     for band in sorted_bands:
-      # if 'monthly_listeners' in artist_info:
-      #   monthly_listeners = artist_info['monthly_listeners']
-      # else:
-      #   monthly_listeners = ''
-      
-      # if band:
-      #   genres = artist_info['genres']
-      # else:
-      #   genres = ''
-      
-      # if 'external_links' in artist_info:
-      #   links = artist_info['external_links']
-      # else:
-      #   links = ''
-      
       if band.spotify_id != '':
         spotify_link = f'https://open.spotify.com/artist/{band.spotify_id}'
       else:
